@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Business.Concrete
             if (car.Description.Length>=2 && car.DailyPrice>0)
             {
                 _carDal.Add(car);
-                Console.WriteLine("Operation Successful.")
+                Console.WriteLine("Operation Successful.");
             }
             else
             {
@@ -32,6 +33,11 @@ namespace Business.Concrete
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public List<Car> GetCarsByBrandId(int id)
