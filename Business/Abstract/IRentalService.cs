@@ -6,7 +6,9 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IColorService : IBaseService<Color>
+    public interface IRentalService : IBaseService<Rental>
     {
+        IResult CheckReturnDate(int carId);
+        IResult UpdateReturnDate(Rental rental);
     }
 }
