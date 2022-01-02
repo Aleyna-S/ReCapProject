@@ -12,6 +12,7 @@ namespace Business.Constants
         public static string Listed= "Listeleme işlemi başarılı";
         public static string MainTenanceTime = "Sistem Bakımda";
         public static string Error = "İşlem sırasında bir hata oluştu!";
-        public static string Updated = "Güncelleme işlemi başarılı"; 
+        public static string Updated = "Güncelleme işlemi başarılı";
+        public static string AddedImages= "Resim Başarıyla Yüklendi";
     }
 }
