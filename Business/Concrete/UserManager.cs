@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,29 +19,17 @@ namespace Business.Concrete
         {
             _userDal = userDal;
         }
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
-            if (user.FirstName == "" || user.LastName == "")
-            {
-                return new ErrorResult(Messages.NameInvalid);
-            }
-
             _userDal.Add(user);
             return new SuccessResult(Messages.Added);
         }
 
         public IResult Delete(User user)
         {
-
-            if (user.Id != 0)
-            {
-                _userDal.Delete(user);
-                return new SuccessResult(Messages.Deleted);
-            }
-            else
-            {
-                return new ErrorResult(Messages.Error);
-            }
+            _userDal.Delete(user);
+            return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<List<User>> GetAll()
